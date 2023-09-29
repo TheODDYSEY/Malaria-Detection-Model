@@ -75,6 +75,10 @@ model.fit(X_train, np.array(y_train), batch_size=64, epochs=3, validation_split=
 
 loss, accuracy = model.evaluate(X_test, np.array(y_test), verbose=0)
 print(f"Testing on {len(X_test)} images, the results are\n Accuracy: {accuracy} | Loss: {loss}")
+
+# save the model & weights
+model.save("malaria-cell-cnn.h5")
+
 # testing some images
 uninfected_cell = "cell_images/testing-samples/C1_thinF_IMG_20150604_104919_cell_82.png"
 infected_cell = "cell_images/testing-samples/C38P3thinF_original_IMG_20150621_112116_cell_204.png"
@@ -86,11 +90,23 @@ ax[1].imshow(plt.imread(infected_cell))
 ax[1].title.set_text("Parasitized Cell")
 plt.show()
 
+img_arr_uninfected = cv2.imread(uninfected_cell, cv2.IMREAD_GRAYSCALE)
+img_arr_infected = cv2.imread(infected_cell, cv2.IMREAD_GRAYSCALE)
+# resize the images to (70x70)
+img_arr_uninfected = cv2.resize(img_arr_uninfected, (img_size, img_size))
+img_arr_infected = cv2.resize(img_arr_infected, (img_size, img_size))
+# scale to [0, 1]
+img_arr_infected = img_arr_infected / 255
+img_arr_uninfected = img_arr_uninfected / 255
+# reshape to fit the neural network dimensions
+# (changing shape from (70, 70) to (1, 70, 70, 1))
+img_arr_infected = img_arr_infected.reshape(1, *img_arr_infected.shape)
+img_arr_infected = np.expand_dims(img_arr_infected, axis=3)
+img_arr_uninfected = img_arr_uninfected.reshape(1, *img_arr_uninfected.shape)
+img_arr_uninfected = np.expand_dims(img_arr_uninfected, axis=3)
 # perform inference
 infected_result = model.predict(img_arr_infected)[0][0]
 uninfected_result = model.predict(img_arr_uninfected)[0][0]
 print(f"Infected: {infected_result}")
 print(f"Uninfected: {uninfected_result}")
 
-# save the model & weights
-model.save("malaria-cell-cnn.h5")
