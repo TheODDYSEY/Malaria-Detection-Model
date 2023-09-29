@@ -85,3 +85,9 @@ ax[0].title.set_text("Uninfected Cell")
 ax[1].imshow(plt.imread(infected_cell))
 ax[1].title.set_text("Parasitized Cell")
 plt.show()
+
+# perform inference
+infected_result = model.predict(img_arr_infected)[0][0]
+uninfected_result = model.predict(img_arr_uninfected)[0][0]
+print(f"Infected: {infected_result}")
+print(f"Uninfected: {uninfected_result}")
