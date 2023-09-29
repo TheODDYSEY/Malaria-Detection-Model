@@ -27,3 +27,16 @@ def load_img_data(path):
         X.append(img_resized)
         y.append(label)
     return X, y
+
+# load the data
+X, y = load_img_data(img_dir)
+# reshape to (n_samples, 70, 70, 1) (to fit the NN)
+X = np.array(X).reshape(-1, img_size, img_size, 1)
+# scale pixels from the range [0, 255] to [0, 1] 
+# to help the neural network learn much faster
+X = X / 255 
+
+# shuffle & split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, stratify=y)
+print("Total training samples:", X_train.shape)
+print("Total validation samples:", X_test.shape[0])
