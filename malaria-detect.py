@@ -5,6 +5,7 @@ from tensorflow.keras.layers import Dense, Conv2D, MaxPool2D, Flatten, Activatio
 from sklearn.model_selection import train_test_split
 import numpy as np
 import matplotlib.pyplot as plt
+
 import glob
 import os
 
@@ -109,4 +110,3 @@ infected_result = model.predict(img_arr_infected)[0][0]
 uninfected_result = model.predict(img_arr_uninfected)[0][0]
 print(f"Infected: {infected_result}")
 print(f"Uninfected: {uninfected_result}")
-
