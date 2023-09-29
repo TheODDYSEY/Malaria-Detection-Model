@@ -72,3 +72,6 @@ model.fit(X_train, np.array(y_train), batch_size=64, epochs=3, validation_split=
 # if you already trained the model, uncomment below and comment above
 # so you can only load the previously trained model
 # model.load_weights("malaria-cell-cnn.h5")
+
+loss, accuracy = model.evaluate(X_test, np.array(y_test), verbose=0)
+print(f"Testing on {len(X_test)} images, the results are\n Accuracy: {accuracy} | Loss: {loss}")
