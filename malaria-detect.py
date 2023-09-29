@@ -40,3 +40,35 @@ X = X / 255
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, stratify=y)
 print("Total training samples:", X_train.shape)
 print("Total validation samples:", X_test.shape[0])
+
+model = Sequential()
+model.add(Conv2D(64, (3, 3), input_shape=X_train.shape[1:]))
+model.add(Activation("relu"))
+model.add(MaxPool2D(pool_size=(2, 2)))
+
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation("relu"))
+model.add(MaxPool2D(pool_size=(2, 2)))
+
+model.add(Conv2D(64, (3, 3)))
+model.add(Activation("relu"))
+model.add(MaxPool2D(pool_size=(2, 2)))
+
+model.add(Flatten())
+
+model.add(Dense(64))
+model.add(Activation("relu"))
+
+model.add(Dense(64))
+model.add(Activation("relu"))
+
+model.add(Dense(1))
+model.add(Activation("sigmoid"))
+
+model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
+
+# train the model with 3 epochs, 64 batch size
+model.fit(X_train, np.array(y_train), batch_size=64, epochs=3, validation_split=0.2)
+# if you already trained the model, uncomment below and comment above
+# so you can only load the previously trained model
+# model.load_weights("malaria-cell-cnn.h5")
