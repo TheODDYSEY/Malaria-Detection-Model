@@ -91,3 +91,6 @@ infected_result = model.predict(img_arr_infected)[0][0]
 uninfected_result = model.predict(img_arr_uninfected)[0][0]
 print(f"Infected: {infected_result}")
 print(f"Uninfected: {uninfected_result}")
+
+# save the model & weights
+model.save("malaria-cell-cnn.h5")
