@@ -75,3 +75,13 @@ model.fit(X_train, np.array(y_train), batch_size=64, epochs=3, validation_split=
 
 loss, accuracy = model.evaluate(X_test, np.array(y_test), verbose=0)
 print(f"Testing on {len(X_test)} images, the results are\n Accuracy: {accuracy} | Loss: {loss}")
+# testing some images
+uninfected_cell = "cell_images/testing-samples/C1_thinF_IMG_20150604_104919_cell_82.png"
+infected_cell = "cell_images/testing-samples/C38P3thinF_original_IMG_20150621_112116_cell_204.png"
+
+_, ax = plt.subplots(1, 2)
+ax[0].imshow(plt.imread(uninfected_cell))
+ax[0].title.set_text("Uninfected Cell")
+ax[1].imshow(plt.imread(infected_cell))
+ax[1].title.set_text("Parasitized Cell")
+plt.show()
