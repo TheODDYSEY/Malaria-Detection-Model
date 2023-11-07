@@ -4,16 +4,16 @@
 
 # Malaria Classification using TensorFlow 2 and Keras
 
-![Malaria Infected vs Uninfected Cells](image.png)
+![test cells](malaria-classification-test-cells.webp)
 
 This project demonstrates how to build a deep learning model to classify cell images as infected or not infected with Malaria. It utilizes TensorFlow 2 and the Keras API in Python. The model is trained on the Malaria Cell Images Dataset and achieves high accuracy in distinguishing between infected and uninfected cells.
 
 ## Table of Contents
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Dataset](#dataset)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Dataset](#dataset)
 - [Data Preprocessing](#data-preprocessing)
 - [Model Architecture](#model-architecture)
 - [Training](#training)
