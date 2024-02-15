@@ -49,8 +49,7 @@ pip install numpy tensorflow opencv-python scikit-learn matplotlib
 
 ```bash
 git clone https://github.com/yourusername/malaria-classification.git
-cd malaria-classification
-```
+cd Malaria-Detection-Model
 
 2. Download the Malaria Cell Images Dataset from Kaggle and extract it https://www.kaggle.com/iarunava/cell-images-for-detecting-malaria
 
