@@ -1,7 +1,3 @@
-
-
----
-
 # Malaria Classification using TensorFlow 2 and Keras
 
 ![test cells](malaria-classification-test-cells.webp)
@@ -98,5 +94,3 @@ You can use the trained model to make inferences on new images. Provided test im
 ## Saving the Model
 
 The trained model can be saved for later use. You can load the model using the saved weights for quick inference without retraining.
-
----
